@@ -15,7 +15,9 @@ export class GoogleIdTokenVerifyGrantIdGuard implements CanActivate {
       request['headers']['google-certification'],
     );
     if (!decodeToken) return false;
-    req.body.uid = decodeToken.uid;
+    req.body.userID = decodeToken.uid;
+    req.body.userName = decodeToken.name;
+    req.body.userPhoto = decodeToken.picture;
     return true;
   }
 }

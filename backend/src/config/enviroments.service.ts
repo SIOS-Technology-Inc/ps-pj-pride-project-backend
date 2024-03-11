@@ -1,4 +1,3 @@
-import { MessagingApiClient } from '@line/bot-sdk/dist/messaging-api/api';
 import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 
@@ -10,18 +9,6 @@ import { getFirestore } from 'firebase-admin/firestore';
 export class EnvironmentsService {
   constructor(private configService: ConfigService) {}
 
-  get LiffID(): string[] {
-    return this.configService.get('LIFF_ID');
-  }
-
-  get ChannelID(): string {
-    return this.configService.get('CHANNEL_ID');
-  }
-
-  get ChannelSecret(): string {
-    return this.configService.get('BOT_CHANNEL_SECRET');
-  }
-
   get FirebasePrivateKey(): string {
     const privateKey: string = this.configService.get('FIREBASE_PRIVATE_KEY');
     return privateKey.replace(/\\n/gm, '\n');
@@ -31,12 +18,6 @@ export class EnvironmentsService {
   }
   get FirebaseProjectID(): string {
     return this.configService.get('FIREBASE_PROJECT_ID');
-  }
-
-  ChannelAccessToken: string = this.configService.get('BOT_CHANNEL_ACCESS_TOKEN');
-  createLinebotClient() {
-    const token = { channelAccessToken: this.ChannelAccessToken };
-    return new MessagingApiClient(token);
   }
 
   private firebaseApp: App;
