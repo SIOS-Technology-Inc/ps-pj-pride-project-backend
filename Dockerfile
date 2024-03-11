@@ -1,7 +1,7 @@
 ARG NODE_VER
-FROM node:${NODE_VER} as dev
-
 FROM node:${NODE_VER} as base
+
+FROM base as dev
 EXPOSE 3000
 
 RUN npm update -g npm
@@ -25,7 +25,7 @@ ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /tini
 RUN chmod +x /tini
 
 
-FROM base AS production
+FROM base
 WORKDIR /home/node/app
 
 RUN apt-get update && apt-get install -y unattended-upgrades
