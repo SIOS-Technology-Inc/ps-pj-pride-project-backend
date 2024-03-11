@@ -1,4 +1,4 @@
-# ps-dev-templates-nestjs
+# ミタプロバックエンド
 
 DevContainer内で起動するNest.jsのサンプル
 

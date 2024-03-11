@@ -30,7 +30,7 @@ jobs:
         working-directory: backend
 
       - name: npm build
-        run: npm build
+        run: npm run build
         working-directory: backend
 
       - name: Upload Cache app
