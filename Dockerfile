@@ -6,6 +6,7 @@ EXPOSE 3000
 
 RUN npm update -g npm
 RUN npm i -g @nestjs/cli
+ENV NODE_ENV dev
 
 USER node
 WORKDIR /home/node/app

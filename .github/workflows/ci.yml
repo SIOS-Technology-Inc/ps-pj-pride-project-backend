@@ -126,3 +126,19 @@ jobs:
         id: build-image-name
         run: |
           echo "container-image-name=${{steps.meta.outputs.tags}}" >> $GITHUB_OUTPUT
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: "build-and-push-image"
+    environment:
+      name: "production"
+
+    steps:
+      - name: Deploy to Azure Web App
+        id: deploy-to-webapp
+        uses: azure/webapps-deploy@v2
+        with:
+          app-name: "pride-content"
+          slot-name: "production"
+          publish-profile: ${{ secrets.AzureAppService_PublishProfile_2b0a6faf53154143a7f25f7cf32f79af }}
+          images: ${{needs.build-and-push-image.outputs.build-image-name}}

@@ -10,6 +10,8 @@ docker compose up -d --build
 
 [http://localhost:3000](http://localhost:3000)にAPIがホストされる。
 
+http://localhost:3000/apiにopenAPI仕様書がある
+
 ## ディレクトリ構造
 
 ```txt
