@@ -42,11 +42,6 @@ jobs:
   build-and-push-image:
     runs-on: ubuntu-22.04
     needs: build-application
-    environment: "production"
-    env:
-      FIREBASE_PROJECT_ID: ${{secrets.FIREBASE_PROJECT_ID}}
-      FIREBASE_PRIVATE_KEY: ${{secrets.FIREBASE_PRIVATE_KEY}}
-      FIREBASE_CLIENT_EMAIL: ${{secrets.FIREBASE_CLIENT_EMAIL}}
     permissions:
       contents: read
       packages: write
@@ -78,14 +73,6 @@ jobs:
         with:
           path: backend/dist/
           key: ${{ runner.os }}-app-${{ github.sha }}
-
-      - name: Create env file
-        run: |
-          touch .env
-          echo "FIREBASE_PROJECT_ID=${{env.FIREBASE_PROJECT_ID}}" >> .env
-          echo "FIREBASE_PRIVATE_KEY=${{env.FIREBASE_PRIVATE_KEY}}" >> .env
-          echo "FIREBASE_CLIENT_EMAIL=${{env.FIREBASE_CLIENT_EMAIL}}" >> .env
-          mv .env backend/.env
 
       - name: npm install node_modules
         run: npm install --production

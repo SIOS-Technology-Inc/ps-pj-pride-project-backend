@@ -31,11 +31,11 @@ WORKDIR /home/node/app
 
 RUN apt-get update && apt-get install -y unattended-upgrades
 RUN unattended-upgrade -v
+ENV NODE_ENV prod
 
 COPY --from=builder /tini /tini
 COPY --chown=node:node ./backend/node_modules/ ./node_modules/
 COPY --chown=node:node ./backend/dist ./dist/
-COPY --chown=node:node ./backend/.env ./.env
 
 USER node
 ENTRYPOINT ["/tini", "--"]
