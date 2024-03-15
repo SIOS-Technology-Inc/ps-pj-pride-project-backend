@@ -9,4 +9,9 @@ export class AppController {
     console.log(process.env.NODE_ENV);
     return process.env.NODE_ENV;
   }
+
+  @Get('/test')
+  test(): string {
+    return process.env.TEST;
+  }
 }
