@@ -6,7 +6,7 @@ import { RequestPrideContentDto, RequestUserIDDto } from './dto/request.dto';
 import { ResponsePrideContentDto } from './dto/response.dto';
 import { PrideUserService } from './pride-user.service';
 
-@ApiTags('ユーザーの自慢のCRUD処理')
+@ApiTags('自慢プロジェクト/ユーザーの自慢のCRUD処理')
 @ApiHeader({
   name: 'google-certification',
   description: '{idToken}',

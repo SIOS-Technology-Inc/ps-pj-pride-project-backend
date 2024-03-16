@@ -6,7 +6,7 @@ import { ResponsePrideContentDto } from 'src/pride-user/dto/response.dto';
 import { RequestThumbsUpPrideDto } from './dto/request.dto';
 import { PrideService } from './pride.service';
 
-@ApiTags('自慢の取得・いいね更新')
+@ApiTags('自慢プロジェクト/自慢の取得・いいね更新')
 @Controller('api/prides')
 export class PrideController {
   constructor(private readonly service: PrideService) {}
