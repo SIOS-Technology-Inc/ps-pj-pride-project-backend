@@ -42,6 +42,7 @@ export class PrideService {
     // TODO:年をまたぐ場合にエラー回避
     const prideCollection = await this.prideDB
       .where('createdAt', '>=', oneMonthAgo)
+      .orderBy('createdAt', 'desc')
       .withConverter(this.prideConverter)
       .get();
     const prides = prideCollection.docs.map((doc) => doc.data());
