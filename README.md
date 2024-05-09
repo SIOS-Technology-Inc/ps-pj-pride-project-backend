@@ -141,9 +141,9 @@ graph LR;
 
 `#ps-pj-自慢プロジェクト`までお問い合わせください。
 
-### StoryBook
+### API仕様書
 
-[https://sios-technology-inc.github.io/ps-pj-pride-project/](https://sios-technology-inc.github.io/ps-pj-pride-project/)
+[API仕様書](https://blue-ground-0332b1a00.3.azurestaticapps.net/api)
 
 ### 画面設計書
 
