@@ -120,7 +120,7 @@ gitGraph
 
 #### PR時
 
-```mermaid:PR時
+```mermaid
 graph LR;
     A[(PRの作成/更新)] --> B[NestのBuild];
     B --> C[container imageのbuildレジストリにpush];
@@ -128,7 +128,7 @@ graph LR;
 
 #### PRクローズ時
 
-```mermaid:PRクローズ時
+```mermaid
 graph LR;
     A[(PRのクローズ)] --> B[NestのBuild];
     B --> C[container imageのbuildレジストリにpush];
