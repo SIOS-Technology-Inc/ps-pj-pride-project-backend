@@ -2,10 +2,11 @@ name: Development CI
 
 on:
   pull_request:
-  push:
+  pull_request_target:
+    types:
+      - closed
     branches:
-      - develop
-      - main
+      - "main"
 
 env:
   REGISTRY: ghcr.io
@@ -117,6 +118,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     needs: "build-and-push-image"
+    if: ${{ github.ref == 'refs/heads/main'}}
     environment:
       name: "production"
 
