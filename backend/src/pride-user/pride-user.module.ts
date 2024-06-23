@@ -4,6 +4,6 @@ import { PrideUserService } from './pride-user.service';
 
 @Module({
   controllers: [PrideUserController],
-  providers: [PrideUserService]
+  providers: [PrideUserService],
 })
 export class PrideUserModule {}
