@@ -146,15 +146,14 @@ export class StorePrideService {
       memo: memo,
     });
   }
-
-  async deletePride(prideID: string) {
-    this.prideDB.doc(prideID).delete();
-  }
-
-  async ThumbUpPride(prideID: string, thumbsupUsers: string[], thumbsupCount: number) {
+  async updateThumbUpPride(prideID: string, thumbsupUsers: string[], thumbsupCount: number) {
     this.prideDB.doc(prideID).update({
       thumbsupUsers: thumbsupUsers,
       thumbsupCount: thumbsupCount,
     });
+  }
+
+  async deletePride(prideID: string) {
+    this.prideDB.doc(prideID).delete();
   }
 }

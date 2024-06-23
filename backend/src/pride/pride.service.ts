@@ -26,7 +26,7 @@ export class PrideService {
       ? thumbsupUsers.filter((user) => user !== request.userPhoto)
       : [...thumbsupUsers, request.userPhoto];
 
-    await this.prideStore.ThumbUpPride(prideID, updateThumbsupUsers, updateThumbsupUsers.length);
+    await this.prideStore.updateThumbUpPride(prideID, updateThumbsupUsers, updateThumbsupUsers.length);
   }
   async isExistPride(prideID: string) {
     return await this.prideStore.isExistPride(prideID);
