@@ -45,6 +45,10 @@ export class StorePrideService {
     const pride = await this.prideDB.doc(uid).get();
     return pride.exists;
   }
+  async getPride(prideID: string) {
+    const pride = await this.prideDB.doc(prideID).withConverter(this.prideConverter).get();
+    return pride.data();
+  }
 
   async getUsersPrideWithInOneMonth(uid: string) {
     const today = new Date();
@@ -147,18 +151,10 @@ export class StorePrideService {
     this.prideDB.doc(prideID).delete();
   }
 
-  async ThumbUpPride(prideID: string, userPhoto: string) {
-    // 受け取った情報をもとに、いいねを更新する
-    const pride = await this.prideDB.doc(prideID).withConverter(this.prideConverter).get();
-    const data = pride.data();
-
-    const thumbsupUsers = data.thumbsupUsers;
-    const updateThumbsupUsers = thumbsupUsers.includes(userPhoto)
-      ? thumbsupUsers.filter((user) => user !== userPhoto)
-      : [...thumbsupUsers, userPhoto];
+  async ThumbUpPride(prideID: string, thumbsupUsers: string[], thumbsupCount: number) {
     this.prideDB.doc(prideID).update({
-      thumbsupUsers: updateThumbsupUsers,
-      thumbsupCount: updateThumbsupUsers.length,
+      thumbsupUsers: thumbsupUsers,
+      thumbsupCount: thumbsupCount,
     });
   }
 }
