@@ -5,6 +5,7 @@ import { AppService } from './app.service';
 import { EnvironmentsModule } from './config/enviroments.module';
 import { PrideUserModule } from './pride-user/pride-user.module';
 import { PrideModule } from './pride/pride.module';
+import { StorePrideModule } from './store/store-pride/store-pride.module';
 
 @Module({
   imports: [
@@ -14,6 +15,7 @@ import { PrideModule } from './pride/pride.module';
     DevtoolsModule.register({
       http: process.env.NODE_ENV !== 'prod',
     }),
+    StorePrideModule,
   ],
   controllers: [AppController],
   providers: [AppService],
