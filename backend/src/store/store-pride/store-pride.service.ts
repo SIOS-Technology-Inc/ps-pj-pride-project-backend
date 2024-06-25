@@ -86,7 +86,7 @@ export class StorePrideService {
   }
 
   async getPrideWithinOneMonthRanking() {
-    const today = new Date();
+ const today = new Date();
 
     const oneMonthAgo =
       today.getMonth() - 1 >= 0
@@ -97,15 +97,14 @@ export class StorePrideService {
       .withConverter(this.prideConverter)
       .where('createdAt', '>', oneMonthAgo)
       .orderBy('createdAt', 'asc')
-      .orderBy('thumbsupCount', 'desc')
-      .limit(3)
       .get();
 
     const prides = prideCollection.docs.map((doc) => doc.data());
+    const pridesRanking = prides.sort((a, b) => b.thumbsupCount - a.thumbsupCount).slice(0, 3);
 
-    return prides;
+    return pridesRanking;
   }
-
+  
   async getPridePast() {
     const today = new Date();
     const oneMonthAgo =
