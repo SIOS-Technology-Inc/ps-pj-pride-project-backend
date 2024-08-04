@@ -1,5 +1,4 @@
 import { Module } from '@nestjs/common';
-import { DevtoolsModule } from '@nestjs/devtools-integration';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { EnvironmentsModule } from './config/enviroments.module';
@@ -8,15 +7,7 @@ import { PrideModule } from './pride/pride.module';
 import { StorePrideModule } from './store/store-pride/store-pride.module';
 
 @Module({
-  imports: [
-    EnvironmentsModule,
-    PrideModule,
-    PrideUserModule,
-    DevtoolsModule.register({
-      http: process.env.NODE_ENV !== 'prod',
-    }),
-    StorePrideModule,
-  ],
+  imports: [EnvironmentsModule, PrideModule, PrideUserModule, StorePrideModule],
   controllers: [AppController],
   providers: [AppService],
 })
