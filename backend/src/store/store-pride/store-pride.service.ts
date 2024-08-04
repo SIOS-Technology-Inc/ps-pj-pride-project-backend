@@ -86,7 +86,7 @@ export class StorePrideService {
   }
 
   async getPrideWithinOneMonthRanking() {
- const today = new Date();
+    const today = new Date();
 
     const oneMonthAgo =
       today.getMonth() - 1 >= 0
@@ -104,7 +104,7 @@ export class StorePrideService {
 
     return pridesRanking;
   }
-  
+
   async getPridePast() {
     const today = new Date();
     const oneMonthAgo =
@@ -113,8 +113,9 @@ export class StorePrideService {
         : new Date(today.getFullYear() - 1, 11, today.getDate());
     const halfYearAgo =
       today.getMonth() - 6 > 0
-        ? new Date(today.getFullYear(), today.getMonth() - 1, today.getDate())
+        ? new Date(today.getFullYear(), today.getMonth() - 6, today.getDate())
         : new Date(today.getFullYear() - 1, 11 + today.getMonth() - 6, today.getDate());
+
     // TODO:年をまたぐ場合にエラー回避
     const prideCollection = await this.prideDB
       .where('createdAt', '>=', halfYearAgo)
