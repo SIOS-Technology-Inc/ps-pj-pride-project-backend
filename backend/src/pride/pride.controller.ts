@@ -17,6 +17,12 @@ export class PrideController {
     const prides = await this.service.getPridesWithinOneMonth();
     return { prides: prides };
   }
+  @ApiResponse({ status: 200, description: 'OK', type: ResponsePrideContentDto })
+  @Get('/all')
+  async getPrideAll(): Promise<ResponsePrideContentDto> {
+    const prides = await this.service.getPrideAll();
+    return { prides: prides };
+  }
 
   @ApiResponse({ status: 200, description: 'OK', type: ResponsePrideContentDto })
   @Get('/ranking')

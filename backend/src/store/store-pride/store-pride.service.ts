@@ -127,6 +127,12 @@ export class StorePrideService {
     return prides;
   }
 
+  async getPrideAll() {
+    const prideCollection = await this.prideDB.orderBy('createdAt', 'desc').withConverter(this.prideConverter).get();
+    const prides = prideCollection.docs.map((doc) => doc.data());
+    return prides;
+  }
+
   async createPride(userID: string, userName: string, userPhotoURL: string, title: string, memo: string) {
     this.prideDB.withConverter(this.prideConverter).add({
       uid: '',
