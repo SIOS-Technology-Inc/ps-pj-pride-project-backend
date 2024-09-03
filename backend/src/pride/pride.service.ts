@@ -18,6 +18,10 @@ export class PrideService {
     const prides = await this.prideStore.getPridePast();
     return prides;
   }
+  async getPrideAll() {
+    const prides = await this.prideStore.getPrideAll();
+    return prides;
+  }
   async patchThumbsupPride(prideID: string, request: RequestThumbsUpPrideDto) {
     const pride = await this.prideStore.getPride(prideID);
 
